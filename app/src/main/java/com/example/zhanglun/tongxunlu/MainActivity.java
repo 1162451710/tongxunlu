@@ -1,15 +1,20 @@
 package com.example.zhanglun.tongxunlu;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import ui.ModuleDecodingXMLFile;
+import ui.ModuleMakingXMLFile;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
         adapter= new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,contactsList);
         contactsView.setAdapter(adapter);
         readContacts();
-        Log.d("Hello","onCreate execute");
     }
 
     private void readContacts(){
@@ -46,5 +50,24 @@ public class MainActivity extends AppCompatActivity {
                 cursor.close();
             }
         }
+    }
+    public void sbcontact(View v) {
+        startMakingXMLFile();
+    }
+
+    public void dlcontact(View v) {
+        startDecodingXMLFile();
+    }
+
+    private void startDecodingXMLFile() {
+        Intent intent = new Intent(MainActivity.this,
+                ModuleDecodingXMLFile.class);
+        startActivity(intent);
+    }
+
+    private void startMakingXMLFile() {
+        Intent intent = new Intent(MainActivity.this,
+                ModuleMakingXMLFile.class);
+        startActivity(intent);
     }
 }
