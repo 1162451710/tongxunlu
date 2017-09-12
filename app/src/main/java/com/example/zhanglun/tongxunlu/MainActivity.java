@@ -17,14 +17,14 @@ public class MainActivity extends AppCompatActivity {
 
     ArrayAdapter<String> adapter;
 
-    List<String> contactList = new ArrayList<String>();
+    List<String> contactsList = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         contactsView=(ListView)findViewById(R.id.contact_view);//获取id
-        adapter= new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,contactList);
+        adapter= new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,contactsList);
         contactsView.setAdapter(adapter);
         readContacts();
         Log.d("Hello","onCreate execute");
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
             while  (cursor.moveToNext()){
                 String displayName = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
                 String number=cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
-                contactList.add(displayName + "/n" + number);
+                contactsList.add(displayName + "\n" + number);
             }
         }catch(Exception e){
             e.printStackTrace();
