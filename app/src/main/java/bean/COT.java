@@ -6,9 +6,9 @@ package bean;
 
 public class COT {
     private String displayName;
-    private long number;
+    private String number;
 
-    public COT(String displayName,long number){
+    public COT(String displayName, String number){
         this.displayName=displayName;
         this.number=number;
     }
@@ -18,16 +18,16 @@ public class COT {
     public void setDisplayName(String displayName) {
         this.displayName = displayName;
     }
-    public long getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(long number){
+    public void setNumber(String number){
         this.number = number;
     }
     @Override
     public String toString(){
-        return displayName + "\n" + number;
+        return "displayName" + displayName + "\n" +"number"+ number;
     }
 
 }

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -32,6 +33,23 @@ public class MainActivity extends AppCompatActivity {
         adapter= new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,contactsList);
         contactsView.setAdapter(adapter);
         readContacts();
+        Button submit = (Button) findViewById(R.id.submit);
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(MainActivity.this, ModuleMakingXMLFile.class);
+                startActivity(intent1);
+            }
+        });
+
+        Button download = (Button) findViewById(R.id.download);
+        download.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent2 = new Intent(MainActivity.this, ModuleDecodingXMLFile.class);
+                startActivity(intent2);
+            }
+        });
     }
 
     private void readContacts(){
@@ -51,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+    /*
     public void sbcontact(View v) {
         startMakingXMLFile();
     }
@@ -69,5 +88,5 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this,
                 ModuleMakingXMLFile.class);
         startActivity(intent);
-    }
+    }*/
 }
